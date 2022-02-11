@@ -15,3 +15,11 @@ export async function getCitiesByName(name: string) {
   }
 }
 
+export async function getWeatherByCoords(coord: Coord) {
+  try {
+    const weatherInfos = await api.get(`/onecall?lat=${coord.lat}&lon=${coord.lon}&units=metric${auth()}`);   
+    return weatherInfos.data;
+  } catch (error) {
+    throw new ExternalApiError("OpenWeather API error");
+  }
+}

@@ -1,4 +1,4 @@
-import { getConnectionManager } from "typeorm";
+import { getConnection, getConnectionManager } from "typeorm";
 
 if (
   process.env.NODE_ENV === "production" &&
@@ -7,7 +7,7 @@ if (
   process.env.DATABASE_URL += "?sslmode=require";
 }
 
-export default async function connect() {
+export async function connect() {
   const connectionManager = getConnectionManager();
 
   const connection = connectionManager.create({
@@ -23,4 +23,8 @@ export default async function connect() {
   await connection.connect();
 
   return connection;
+}
+
+export async function disconnect() {
+  await getConnection().close();
 }

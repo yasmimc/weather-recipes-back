@@ -5,7 +5,7 @@ import "express-async-errors";
 import cors from "cors";
 import "reflect-metadata";
 
-import connectDatabase from "@/database";
+import { connect as connectDatabase, disconnect as closeDatabaseConnection } from "@/database";
 import router from "@/routers";
 
 const app = express();
@@ -16,6 +16,10 @@ app.use(router);
 
 export async function init() {
   await connectDatabase();
+}
+
+export async function end() {
+  await closeDatabaseConnection();
 }
 
 export default app;

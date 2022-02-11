@@ -1,11 +1,7 @@
 import supertest from "supertest";
 import httpStatus from "http-status";
 
-import app, { init, end } from "@/app";
-
-beforeAll(async() => {
-  await init();
-});
+import app from "@/app";
 
 const recipeRoute = "/recipe";
 
@@ -16,6 +12,3 @@ describe("tests for /recipe route", () => {
   });
 });
 
-afterAll(async() => {
-  await end();
-});

@@ -3,10 +3,10 @@ interface WeatherData {
   lon: number;
   timezone: number;
   timezone_offset: number;
-  current: object;
-  daily: object[];
-  hourly: object[];
-  minutely: object[];
+  current: any;
+  daily?: object[];
+  hourly?: object[];
+  minutely?: object[];
 }
 
 export default WeatherData;

@@ -1,5 +1,6 @@
 import Weather from "@/entities/weather";
 import Coord from "@/interfaces/coord";
+import WeatherData from "@/interfaces/weather";
 import * as openWeatherService from "@/services/openWeatherAPI";
 
 export async function getWeatherNow(coord: Coord) {
@@ -8,3 +9,6 @@ export async function getWeatherNow(coord: Coord) {
   return Weather.format(weatherInfos);
 }
 
+export function getTemperature(weatherInfos: WeatherData) {
+  return weatherInfos.current.temp;
+}

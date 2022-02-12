@@ -1,8 +1,13 @@
+import BadRequestError from "@/errors/BadRequestError";
 import ExternalApiError from "@/errors/ExternalApiError";
 import { NextFunction, Request, Response } from "express";
 import httpStatus from "http-status";
 
 export default function errorHandlingMiddleware(err: Error, _req: Request, res: Response, _next: NextFunction) {
+  if (err instanceof BadRequestError) {
+    return res.status(httpStatus.BAD_REQUEST).send(err.message);
+  }
+
   if (err instanceof ExternalApiError) {
     return res.status(httpStatus.SERVICE_UNAVAILABLE).send(err.message);
   }

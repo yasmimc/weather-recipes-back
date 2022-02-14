@@ -26,5 +26,6 @@ export async function getRecipeByWeather(coord: Coord) {
   const weatherInfos = await weatherService.getWeatherNow(coord);
   const temp = weatherService.getTemperature(weatherInfos);
   const recipes = await getRecipesByTemp(temp);
-  return getRandomRecipe(recipes);
+  const recipe = getRandomRecipe(recipes);
+  return ({ ...recipe, weather: weatherInfos });
 }

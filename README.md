@@ -38,6 +38,17 @@ Launches the test runner in the sequencial mode.
 
 Launches the test runner in the interactive watch mode.
 
-### Deployment
+## Routes
+
+### `GET /city/find?name={name}`
+Returns a list of cities that match the searched name.
+
+### `GET /weather?lat={lat}&lon={lon}`
+Returns a list of weather information for the searched location.
+
+### `GET /recipe?lat={lat}&lon={lon}`
+Returns a random recipe based on the weather of the location you search and the weather information.
+
+## Deployment
 
 This api is deployed on Heroku, you can visit it by accessing the url https://weather-recipes.herokuapp.com/.
